@@ -61,3 +61,30 @@ var minimax = function (depth, game, alpha, beta, isMaximisingPlayer) {
     return bestMove;
   }
 };
+
+var evaluateBoard = function (board) {
+  var totalEvaluation = 0;
+  for (var i = 0; i < 8; i++) {
+    for (var j = 0; j < 8; j++) {
+      totalEvaluation = totalEvaluation + getPieceValue(board[i][j], i, j);
+    }
+  }
+  return totalEvaluation;
+};
+
+var reverseArray = function (array) {
+  return array.slice().reverse();
+};
+
+var pawnEvalWhite = [
+  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+  [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0],
+  [1.0, 1.0, 2.0, 3.0, 3.0, 2.0, 1.0, 1.0],
+  [0.5, 0.5, 1.0, 2.5, 2.5, 1.0, 0.5, 0.5],
+  [0.0, 0.0, 0.0, 2.0, 2.0, 0.0, 0.0, 0.0],
+  [0.5, -0.5, -1.0, 0.0, 0.0, -1.0, -0.5, 0.5],
+  [0.5, 1.0, 1.0, -2.0, -2.0, 1.0, 1.0, 0.5],
+  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+];
+
+var pawnEvalBlack = reverseArray(pawnEvalWhite);
