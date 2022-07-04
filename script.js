@@ -272,3 +272,25 @@ var onMouseoutSquare = function (square, piece) {
 var removeGreySquares = function () {
   $('#board .square-55d63').css('background', '');
 };
+
+var greySquare = function (square) {
+  var squareEl = $('#board .square-' + square);
+
+  var background = '#a9a9a9';
+  if (squareEl.hasClass('black-3c85d') === true) {
+    background = '#696969';
+  }
+
+  squareEl.css('background', background);
+};
+
+var cfg = {
+  draggable: true,
+  position: 'start',
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onMouseoutSquare: onMouseoutSquare,
+  onMouseoverSquare: onMouseoverSquare,
+  onSnapEnd: onSnapEnd,
+};
+board = ChessBoard('board', cfg);
